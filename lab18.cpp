@@ -3,18 +3,12 @@
 using namespace std;
 
 const Node{   // create a struct for the node
-    int data;
+   double rating;
+   string comments;
     node* next;
 }
 
 struct Node *head = nullptr; // set head to null
-
-void insert(int n){  // function to insert a new node at the head
-    struct Node *newNode = new Node;
-    newNode -> data = n;
-    newNode -> next = head;
-    head = newNode;
-}
 
 
 int main(){
@@ -37,9 +31,8 @@ int main(){
         return 1;
     }
 
-    double rating;
-    string comments;
-    char another;
+   
+      char another;
 
     cout << "Enter review rating 0-5: " << endl;
     cin >> rating;
@@ -67,27 +60,38 @@ int main(){
     }
 
     cout << "Outputting all reviews: " << endl;
-
-
-
+    // output all reviews here
+    // make sure to output review number, rating, and comments in same format as example
+    // calculate and output average rating
 
 
 }
 
 
+void addAtHead(double rating, string comments){
+    struct Node *newNode = new Node; // create it here
+    newNode -> rating = rating; // input data
+    newNode -> comments = comments; //input data
+    newNode -> next = head; // point new node to head
+    head = newNode; // move head to point to new node
 
+}
 
-// Which linked list method should we use?
-//     [1] New nodes are added at the head of the linked list
-//     [2] New nodes are added at the tail of the linked list
-//     Choice: 2
-// Enter review rating 0-5: 4.8
-// Enter review comments: Oscar contender
-// Enter another review? Y/N: y
-// Enter review rating 0-5: 4.1
-// Enter review comments: Brilliant lead acting
-// Enter another review? Y/N: n
-// Outputting all reviews:
-//     > Review #1: 4.8: Oscar contender
-//     > Review #2: 4.1: Brilliant lead acting
-//     > Average: 2.96667
+void addAtTail(double rating, string comments){
+    struct Node *newNode = new Node; // create it here
+    newNode -> rating = rating; // input data
+    newNode -> comments = comments; //input data
+    newNode -> next = nullptr; // point new node to tail
+    nullptr = newNode; // move head to point to new node
+
+    if(head == nullptr) { //check if list is empty
+        head = newNode; // if it is then we set head to new node
+    }
+    else {
+        struct Node *temp = head; // create a temp node to traverse the list
+        while(temp -> next != nullptr){ // here we need to reach the last node
+            temp = temp -> next; // move to next node
+        }
+        temp -> next = newNode; // point last node to new node
+    }
+}
