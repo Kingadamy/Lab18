@@ -28,7 +28,7 @@ int main(){
     cout << "\tChoice: ";
     cin >> choice;
 
-    cout << "Enter review rating 0-5: " << endl;  // get first review
+    cout << "Enter review rating 0-5: "; // get first review
     cin >> rating;
     cin.ignore();
 
@@ -45,13 +45,13 @@ int main(){
         return 1;
     }
  
-    cout << "Enter another review? Y/N: " << endl;
+    cout << "Enter another review? Y/N: ";
     cin >> another;
     cin.ignore();
 
 
     while (another == 'y' || another == 'Y'){  // while loop to continue adding reviews until user says no
-        cout << "Enter review rating 0-5: " << endl;
+        cout << "Enter review rating 0-5: "
         cin >> rating;
         cin.ignore();
 
@@ -64,7 +64,7 @@ int main(){
             addAtTail(rating, comments);
         }
 
-        cout << "Enter another review? Y/N: " << endl;
+        cout << "Enter another review? Y/N: ";
         cin >> another;
         cin.ignore();
     }
@@ -117,8 +117,18 @@ void display(){ //display outputs now
 
     struct Node *temp = head; // transverse the list
     while(temp != nullptr){
-        cout << temp -> rating << endl; // output rating
-        cout << temp -> comments << endl; // output comments
-        temp = temp -> next; // move to next node
+        cout << "\t> Review #" << count << ": " << temp->rating << ": " << temp->comments << endl;
+        
+        sum += temp->rating; // sum of ratings
+        total++;  // how many reviews there are
+        count++;  // add review #
+        
+        temp = temp->next;
     }
+    
+    // find averege
+    if (total > 0) {
+        cout << "\t> Average: " << (sum / total) << endl;
+    }
+
 }
