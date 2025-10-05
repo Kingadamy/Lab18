@@ -104,9 +104,9 @@ void addAtTail(double rating, string comments){
 
 void display(){ //display outputs now
     struct Node *temp = head; // transverse the list
-    while(temp != nullptr){}
+    while(temp != nullptr){
         cout << temp -> rating << endl; // output rating
         cout << temp -> comments << endl; // output comments
         temp = temp -> next; // move to next node
+    }
 }
-
