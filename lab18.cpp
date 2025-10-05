@@ -3,7 +3,7 @@
 using namespace std;
 
 const Node{   // create a struct for the node
-    string movieRating;
+    int data;
     node* next;
 }
 
@@ -37,10 +37,38 @@ int main(){
         return 1;
     }
 
-    cout << "Enter review rating 0-5: ";
-    
-    
     double rating;
+    string comments;
+    char another;
+
+    cout << "Enter review rating 0-5: " << endl;
+    cin >> rating;
+    cin.ignore();
+
+    cout << "Enter review comments: \n";
+    getline(cin, comments);
+ 
+
+    cout << "Enter another review? Y/N: " << endl;
+    cin >> another;
+    cin.ignore();
+
+    while (another == 'y' || another == 'Y'){  // while loop to continue adding reviews until user says no
+        cout << "Enter review rating 0-5: " << endl;
+        cin >> rating;
+        cin.ignore();
+
+        cout << "Enter review comments: \n";
+        getline(cin, comments);
+
+        cout << "Enter another review? Y/N: " << endl;
+        cin >> another;
+        cin.ignore();
+    }
+
+    cout << "Outputting all reviews: " << endl;
+
+
 
 
 
